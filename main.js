@@ -1,5 +1,6 @@
 const newJokeButton = document.getElementById("text-jokes");
-const listHistory = document.getElementById("jokes-history")
+const listHistory = document.getElementById("jokes-history");
+const imageJokeButton = document.getElementById("image-jokes");
 
 // we want to make a dynamic webpage of dad jokes
 // interactivity via button click
@@ -15,7 +16,8 @@ async function getDadTextJokes() {
         headers: { accept: "application/json" },
     });
     const textResponse = await requestTextJoke.json();
-    console.log(textResponse);
+    listHistory.innerText = textResponse.joke; 
+    addJokeToList(textResponse.joke);
 }
 
 getDadTextJokes();
@@ -41,5 +43,12 @@ function addJokeToList(string) {
 
     const listItem = document.createTextNode(string);
     li.appendChild(listItem);
-    listHistory.appendChild(li);
+    //listHistory.appendChild(li);
 }
+
+// Display dad image on webpage
+
+// function addImageToList(image) {
+    // const image = document.createElement("img");
+    // const listImage = document.
+
